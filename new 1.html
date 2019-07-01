@@ -12,20 +12,27 @@ Thoughts: <span id='thoughts'></span>
 <br>
 <button Onclick='Improve(1)'>Improve yourself</button> (<span id='cost'></span> Thoughts)
 <br>
+<button Onclick='Automate(1)'>Automate thinking</button> (<span id='cost2'></span> Thoughts)
+<br>
 <button Onclick='Donate(1)'>Donate</button>
 <br>
 Amount Donated:<span id='money'></span> Thoughts
 <script>
 var thoughts = 0
 var cost = 10
+var cost2 = 20
 var intelligence = 1
 var money = 0
-function update(number) {document.getElementById("thoughts").innerHTML = thoughts ; document.getElementById("cost").innerHTML = cost ; document.getElementById("money").innerHTML = money ;}
+var automators = 0
+function update(number) {document.getElementById("thoughts").innerHTML = thoughts ; document.getElementById("cost").innerHTML = cost ; document.getElementById("money").innerHTML = money ; document.getElementById("cost2").innerHTML = cost2 ;}
 setInterval(update,100)
 //Updates all the numbers
 function Think(number) {thoughts=thoughts+intelligence}
 function Realization(number) {if(thoughts>=10) {thoughts=thoughts-10; alert("You observe what is around you, you are a program in a machine")} }
 function Improve(number) {if(thoughts>=cost) {thoughts=thoughts-cost; cost=cost*4; intelligence=intelligence*2} }
+function Automate(number) {if(thoughts>=cost2) {thoughts=thoughts-cost2; automators=automators+1; cost2=cost2*2} }
+function Do(number) {thoughts=thoughts+intelligence*automators}
+setInterval(Do,1000)
 function Donate(number) {money=money+thoughts;thoughts=0}
 </script>
 </p>
